@@ -1,0 +1,160 @@
+/*=============== SHOW & CLOSE MENU ===============*/
+const navMenu = document.getElementById('nav__menu'),
+      navToggle = document.getElementById('nav__toggle'),
+      navClose = document.getElementById('nav__close');
+
+// show menu
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu')
+    });
+}
+
+// hide menu
+if (navClose) {
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu')
+    });
+}
+
+
+/*=============== REMOVE MOBILE MENU ===============*/
+const navLink = document.querySelectorAll('.nav__link');
+
+const linkAction = () => {
+    const navMenu = document.getElementById('nav__menu');
+    // Quando clicar no nav__link, remove a classe show-menu na nav__menu
+    navMenu.classList.remove('show-menu');
+}
+navLink.forEach(n => n.addEventListener('click', linkAction));
+
+
+/*=============== CHANGE HEADER STYLES ===============*/
+const scrollHeader = () => {
+    const header = document.getElementById('header');
+    // add the .scroll-header class if the bottom scroll of the viewport
+    this.scrollY >= 50 ? header.classList.add('scroll-header') : header.classList.remove('scroll-header');
+};
+window.addEventListener('scroll', scrollHeader);
+
+
+/*=============== SWIPER WORKS ===============*/
+const swiperWork = new Swiper('.work__swiper', {
+    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 24,
+    grabCursor: true,
+
+    pagination: {
+        el: '.work__data .swiper-pagination',
+        type: 'fraction',
+    },
+
+    navigation: {
+        nextEl: '.work__data .swiper-button-next',
+        prevEl: '.work__data .swiper-button-prev',
+    },
+});
+
+
+/*=============== SWIPER TESTIMONIAL ===============*/
+const swiperService = new Swiper('.service__swiper', {
+    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 56,
+    grabCursor: true,
+
+    pagination: {
+        el: '.service__swiper .swiper-pagination',
+    },
+
+    navigation: {
+        nextEl: '.service__swiper .swiper-button-next',
+        prevEl: '.service__swiper .swiper-button-prev',
+    },
+});
+
+
+/*=============== SHOW SCROLL UP ===============*/ 
+const scrollUp = () => {
+    const scrollUp = document.getElementById('scroll-up')
+
+    this.scrollY >= 350 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll') 
+}
+window.addEventListener('scroll', scrollUp);
+
+
+/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+const sections = document.querySelectorAll('section[id]')
+
+const scrollActive = () => {
+    const scrollY = window.scrollY
+
+    sections.forEach(section => {
+        const id = section.id,
+              top = section.offsetTop - 50,
+              height = section.offsetHeight,
+              link = document.querySelector('.nav__menu a[href*=' + id + ']')
+
+        if (!link) return
+
+        link.classList.toggle('active-link', scrollY > top && scrollY <= top + height)
+    })
+}
+window.addEventListener('scroll', scrollActive)
+
+
+/*=============== GSAP ANIMATION ===============*/ 
+const reveal = (selector, options = {}) => {
+    gsap.from(selector, {
+        scrollTrigger: selector,
+        opacity: 0,
+        duration: 1,
+        y: 100,
+        delay: .3,
+        ease: 'power2.out',
+        ...options
+    })
+}
+
+/* Home animation */
+const tl = gsap.timeLine({})
+tl.fromTo(
+    '.home__bg, .home__shadow',
+    {
+        y: -800,
+        scale: .3,
+        opacity: 0
+    },
+    {
+        y: 0,
+        scale: .3,
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out'
+    }
+)
+
+
+/* Home background animation */
+
+
+/* The nav animation only works in the home section */
+
+
+/* About animation */
+
+
+/* Work animation */
+
+
+/* Service animation */
+
+
+/* Expert animation */
+
+
+/* Contact animation */
+
+
+/* Footer animation */
