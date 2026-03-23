@@ -134,9 +134,17 @@ tl.fromTo(
         ease: 'power3.out'
     }
 )
-
+tl.to (
+    '.home__bg, .home__shadow',
+    {
+        scale: 1,
+        duration: 1,
+        ease: 'back.out(0.5)'
+    }
+)
 
 /* Home background animation */
+
 
 
 /* The nav animation only works in the home section */
